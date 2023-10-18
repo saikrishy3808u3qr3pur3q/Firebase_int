@@ -1,25 +1,44 @@
-import 'package:basics_firebase/Screens/wrapper.dart';
-import 'package:flutter/material.dart';
-import 'package:firebase_core/firebase_core.dart';
+import 'package:basics_firebase/core/constant/app_route.dart';
+import 'package:basics_firebase/view/home_screen/home_screen.dart';
+import 'package:basics_firebase/view/login_signup/login/login.dart';
+import 'package:basics_firebase/view/login_signup/signup/signup.dart';
+
 import 'firebase_options.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
+import 'core/controller/login_sign_up_controller.dart';
+import 'view/splash_screen.dart';
 
-Future<void> main() async {
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
+  Get.put(LoginSignUpController());
   runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Wrapper(),
+    return GetMaterialApp(
+      debugShowCheckedModeBanner: false,
+      title: 'Flutter Firebase Login SignUp',
+      theme: ThemeData(
+        useMaterial3: true,
+      ),
+      routes: {s
+        AppRoutes.loginScreen: (context) => const LoginScreen(),
+        AppRoutes.homeScreen: (context) => HomeScreen(),
+        AppRoutes.signUpScreen: (context) => const SignUpScreen(),
+        AppRoutes.splashScreen: (context) => const SplashScreen(),
+      },
+      initialRoute: AppRoutes.splashScreen,
     );
   }
 }

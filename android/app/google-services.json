@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "143015024721",
+    "firebase_url": "https://ninja-brew-crew-faa27-default-rtdb.asia-southeast1.firebasedatabase.app",
+    "project_id": "ninja-brew-crew-faa27",
+    "storage_bucket": "ninja-brew-crew-faa27.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:143015024721:android:edbfdfad615d24d752c070",
+        "android_client_info": {
+          "package_name": "com.example.basics_firebase"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBiXmt5HtOdF9C5-h3C5wD7YJu-HX9Z1Tw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

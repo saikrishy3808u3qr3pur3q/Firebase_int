@@ -32,7 +32,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         useMaterial3: true,
       ),
-      routes: {s
+      routes: {
         AppRoutes.loginScreen: (context) => const LoginScreen(),
         AppRoutes.homeScreen: (context) => HomeScreen(),
         AppRoutes.signUpScreen: (context) => const SignUpScreen(),

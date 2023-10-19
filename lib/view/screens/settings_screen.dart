@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:basics_firebase/view/home_screen/home_screen.dart';
+import 'package:basics_firebase/core/controller/login_sign_up_controller.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:ionicons/ionicons.dart';
 import 'package:basics_firebase/widgets/settings_tile.dart';
@@ -17,16 +18,19 @@ class _SettingsScreenState extends State<SettingsScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: Text("Settings",
+        style: TextStyle(
+          fontWeight: FontWeight.bold,
+
+        ),),
+      ),
       body: SafeArea(
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+          padding: const EdgeInsets.symmetric(horizontal: 20),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const Text(
-                "Settings",
-                style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
-              ),
               const SizedBox(height: 40),
               SettingsTile(
                 color: Colors.blue,
@@ -63,16 +67,6 @@ class _SettingsScreenState extends State<SettingsScreen> {
               ),
               const SizedBox(
                 height: 40,
-              ),
-              SettingsTile(
-                color: Colors.red,
-                icon: Ionicons.log_out_outline,
-                title: "Logout",
-                onTap: () async {
-                  await _loginSignUpController.logOut();
-                  Get.offAllNamed(AppRoutes.loginScreen);
-
-                },
               ),
             ],
           ),

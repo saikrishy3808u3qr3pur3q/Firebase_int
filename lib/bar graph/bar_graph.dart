@@ -22,7 +22,7 @@ class MyBarGraph extends StatelessWidget {
       barRods: [
         BarChartRodData(
           toY: data.y,
-          color:Color(0xFFD0D3E2),
+          color:Color(0xFF7A82B0),
           width:25,
           borderRadius: BorderRadius.circular(1),
           backDrawRodData: BackgroundBarChartRodData(

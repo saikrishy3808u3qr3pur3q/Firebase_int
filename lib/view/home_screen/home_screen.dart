@@ -31,13 +31,14 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  final LoginSignUpController _loginSignUpController =
+  final LoginSignUpController loginSignUpController =
   Get.find<LoginSignUpController>();
   final UserService _userService = UserService();
+  static const primaryColor = Color(0xFF142477);
 
   @override
   void dispose() {
-    _loginSignUpController.dispose();
+    loginSignUpController.dispose();
     super.dispose();
   }
   static const IconData route = IconData(0xf0561, fontFamily: 'MaterialIcons');
@@ -49,14 +50,14 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
       drawer: Drawer(
         surfaceTintColor: Colors.grey,
-        backgroundColor: Colors.grey,
+        backgroundColor: Colors.white,
         child: ListView(
           padding: EdgeInsets.zero,
           children: [
             UserAccountsDrawerHeader
               (
                 decoration: BoxDecoration(
-                  color: Colors.black,
+                  color: Color(0xFF142477),
                 ),
                 accountName: Text('Saikrishnan R ',style:
                 TextStyle(
@@ -67,6 +68,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   fontSize: 15,
                 ),)),
             ListTile(
+              selectedColor: Color(0xFF7A82B0),
               onTap: (){
                 Navigator.pushNamed(context, "/currenttrip");
               },
@@ -89,7 +91,7 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
             ListTile(
               onTap: (){
-                Navigator.pushNamed(context, "/settings");
+                Navigator.pushNamed(context, "/settings",arguments: loginSignUpController);
               },
               leading: Icon(Icons.settings),
               title: Text("Settings"),
@@ -103,7 +105,7 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
             ListTile(
               onTap: () async {
-                await _loginSignUpController.logOut();
+                await loginSignUpController.logOut();
                 Get.offAllNamed(AppRoutes.loginScreen);
 
               },
@@ -118,7 +120,7 @@ class _MyHomePageState extends State<MyHomePage> {
         children: [
           Container(
             decoration: BoxDecoration(
-              color: Theme.of(context).primaryColor,
+              color: primaryColor,
               borderRadius: const BorderRadius.only(
                 bottomRight: Radius.circular(50),
               ),
@@ -128,7 +130,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 const SizedBox(height: 50),
                 ListTile(
                   contentPadding: const EdgeInsets.symmetric(horizontal: 30),
-                  title: Text('Hello Narayan Krishna R', style: Theme.of(context).textTheme.headlineSmall?.copyWith(
+                  title: Text('Hello SaiKrishnan R', style: Theme.of(context).textTheme.headlineSmall?.copyWith(
                       color: Colors.white
                   )),
                   subtitle: Text('Good Morning', style: Theme.of(context).textTheme.titleMedium?.copyWith(
@@ -144,7 +146,7 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
           ),
           Container(
-            color: Theme.of(context).primaryColor,
+            color: primaryColor,
             child: Container(
               padding: const EdgeInsets.symmetric(horizontal: 30),
               decoration: const BoxDecoration(
@@ -189,34 +191,39 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   itemDashboard(String title, IconData iconData, Color background) =>
-      Container(
-        decoration: BoxDecoration(
-            color: Colors.white70,
-            borderRadius: BorderRadius.circular(10),
-            boxShadow: [
-              BoxShadow(
-                  offset: const Offset(0, 5),
-                  color: Theme.of(context).primaryColor.withOpacity(.2),
-                  spreadRadius: 2,
-                  blurRadius: 5
-              )
-            ]
-        ),
-        child: Expanded(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Container(
-                  padding: const EdgeInsets.all(10),
-                  decoration: BoxDecoration(
-                    color: background,
-                    shape: BoxShape.circle,
-                  ),
-                  child: Icon(iconData, color: Colors.white)
-              ),
-              const SizedBox(height: 8),
-              Text(title.toUpperCase(), style: Theme.of(context).textTheme.titleSmall?.copyWith(color:Color(0xFF142477))),
-            ],
+      GestureDetector(
+        onTap: (){
+
+        },
+        child: Container(
+          decoration: BoxDecoration(
+              color: Colors.white70,
+              borderRadius: BorderRadius.circular(10),
+              boxShadow: [
+                BoxShadow(
+                    offset: const Offset(0, 5),
+                    color: Theme.of(context).primaryColor.withOpacity(.2),
+                    spreadRadius: 2,
+                    blurRadius: 5
+                )
+              ]
+          ),
+          child: Expanded(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Container(
+                    padding: const EdgeInsets.all(10),
+                    decoration: BoxDecoration(
+                      color: background,
+                      shape: BoxShape.circle,
+                    ),
+                    child: Icon(iconData, color: Colors.white)
+                ),
+                const SizedBox(height: 8),
+                Text(title.toUpperCase(), style: Theme.of(context).textTheme.titleSmall?.copyWith(color:Color(0xFF142477))),
+              ],
+            ),
           ),
         ),
       );

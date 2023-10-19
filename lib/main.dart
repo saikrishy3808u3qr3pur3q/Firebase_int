@@ -2,6 +2,7 @@ import 'package:basics_firebase/core/constant/app_route.dart';
 import 'package:basics_firebase/view/home_screen/home_screen.dart';
 import 'package:basics_firebase/view/login_signup/login/login.dart';
 import 'package:basics_firebase/view/login_signup/signup/signup.dart';
+import 'package:basics_firebase/view/screens/settings_screen.dart';
 
 import 'firebase_options.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -37,6 +38,7 @@ class MyApp extends StatelessWidget {
         AppRoutes.homeScreen: (context) => HomeScreen(),
         AppRoutes.signUpScreen: (context) => const SignUpScreen(),
         AppRoutes.splashScreen: (context) => const SplashScreen(),
+        '/settings':(context)=> const SettingsScreen()
       },
       initialRoute: AppRoutes.splashScreen,
     );
